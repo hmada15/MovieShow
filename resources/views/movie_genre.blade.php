@@ -18,13 +18,13 @@
     <div class="row">
         <div class="col-xl-12 col-lg-12">
             <div class="row">
-                @foreach ($movies as $movie)
+                @foreach ($movies['results'] as $movie)
                     <div class="col-xl-4 col-md-6 mb-4">
                         <div class="card m-card shadow border-0">
                             <div class="m-card-cover">
                                 <div class="position-absolute bg-white shadow-sm rounded text-center p-2 m-2 love-box">
-                                    <h6 class="text-gray-900 mb-0 font-weight-bold"><i class="fas fa-heart text-success"></i> {{$movie["vote_average"]}}</h6>
-                                    <small class="text-muted">{{$movie["popularity"]}}</small>
+                                    <h6 class="text-gray-900 mb-0 font-weight-bold"><i class="fas fa-heart text-success"></i> {{$movie["vote_average"]  ?? ""}}</h6>
+                                    <small class="text-muted">{{$movie["popularity"]  ?? ""}}</small>
                                 </div>
                                 <a href="{{route("movie.show",[$movie['id'],SlugIt($movie['title'])])}}">
                                     <img src="https://image.tmdb.org/t/p/w500/.{{$movie["poster_path"]}}" class="card-img-top" alt="{{SlugIt($movie['title'])}}" />
@@ -41,14 +41,14 @@
                                     </a>
                                     @endforeach
                                     <br>
-                                    <small class="text-danger"><i class="fas fa-calendar-alt fa-sm text-gray-400"></i> {{$movie["release_date"]}}</small>
+                                    <small class="text-danger"><i class="fas fa-calendar-alt fa-sm text-gray-400"></i> {{$movie["release_date"]  ?? ""}}</small>
                                 </p>
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
-            <div class="mb-4" id="light-pagination"></div>
+            {{$movies->links()}}
         </div>
     </div>
 </div>

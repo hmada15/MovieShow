@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-xl-12 col-lg-12">
             <div class="row">
-                @foreach ($actors as $actor)
+                @foreach ($actors['results'] as $actor)
                     <div class="col-xl-4 col-md-6 mb-4">
                         <div class="card p-card shadow border-0">
                             <div class="row no-gutters">
@@ -48,7 +48,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="mb-4" id="light-pagination"></div>
+            {{$actors->links()}}
         </div>
     </div>
 </div>

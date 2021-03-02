@@ -18,14 +18,14 @@
     <div class="row">
         <div class="col-xl-12 col-lg-12">
             <div class="row">
-                @foreach ($tv_shows as $tv)
+                @foreach ($tv_shows['results'] as $tv)
                     <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card m-card shadow border-0">
 
                             <div class="m-card-cover">
                                 <div class="position-absolute bg-white shadow-sm rounded text-center p-2 m-2 love-box">
-                                    <h6 class="text-gray-900 mb-0 font-weight-bold"><i class="fas fa-heart text-success"></i>{{$tv["vote_average"]}}</h6>
-                                    <small class="text-muted">{{$tv["popularity"]}}</small>
+                                    <h6 class="text-gray-900 mb-0 font-weight-bold"><i class="fas fa-heart text-success"></i>{{$tv["vote_average"] ?? ""}}</h6>
+                                    <small class="text-muted">{{$tv["popularity"] ?? ""}}</small>
                                 </div>
                                 <a href="{{route("tv.show",[$tv["id"],SlugIt($tv['name'])])}}">
                                     <img src="https://image.tmdb.org/t/p/w500/.{{$tv["poster_path"]}}" class="card-img-top"/>
@@ -42,7 +42,7 @@
                                     </a>
                                     @endforeach
                                     <br>
-                                    <p class="text-danger"><i class="fas fa-calendar-alt fa-sm"></i> {{$tv["first_air_date"]}}</p>
+                                    <p class="text-danger"><i class="fas fa-calendar-alt fa-sm"></i> {{$tv["first_air_date"] ?? ""}}</p>
                                 </p>
                             </div>
 
@@ -50,7 +50,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="mb-4" id="light-pagination"></div>
+            {{$tv_shows->links()}}
         </div>
     </div>
 </div>
