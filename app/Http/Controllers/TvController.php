@@ -19,7 +19,7 @@ class TvController extends Controller
             ->json();
 
         //Custom helper function
-        $actors = manualPagination($tv_shows_data, $request);
+        $tv_shows = manualPagination($tv_shows_data, $request);
 
         $tv_genresArr =  getApiData('genre/tv/list', 'genres');
 
