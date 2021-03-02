@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Http;
 
 if (!function_exists('repeat_img'))
 {
-    //get data form themoviedb and get token and base url form .env
+    //Helper function to get data form themoviedb and get token and base url form .env
     function getApiData($route,$arr){
         return Http::withToken(config('services.tmdp.token'))
                 ->get(config('services.tmdp.url').$route)
